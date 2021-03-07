@@ -1,6 +1,20 @@
 package filter
 
-import "testing"
+import (
+	"github.com/gofiber/fiber/v2"
+	"testing"
+)
+
+func Test_New(t *testing.T) {
+	app := fiber.New()
+	// default config
+	app.Use(New())
+	// custom config
+	app.Use(New(Config{
+		CaseSensitive: true,
+		UrlPattern: []string{"/api/*"},
+	}))
+}
 
 func Test_MatchDefaultUrl(t *testing.T) {
 	config := Config{}

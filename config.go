@@ -35,28 +35,35 @@ var defaultMethodPattern = []string{
 	fiber.MethodDelete,
 }
 
-func configDefault(config Config) Config {
+func configDefault(config ...Config) Config {
+	var cfg Config
+	if len(config) > 0 {
+		cfg = config[0]
+	} else {
+		cfg = Config{}
+	}
+
 	// default url pattern
-	if config.UrlPattern == nil || len(config.UrlPattern) == 0 {
-		config.UrlPattern = defaultUrlPattern
+	if cfg.UrlPattern == nil || len(cfg.UrlPattern) == 0 {
+		cfg.UrlPattern = defaultUrlPattern
 	}
 
 	// default method pattern
-	if config.MethodPattern == nil || len(config.MethodPattern) == 0 {
-		config.MethodPattern = defaultMethodPattern
+	if cfg.MethodPattern == nil || len(cfg.MethodPattern) == 0 {
+		cfg.MethodPattern = defaultMethodPattern
 	}
 
 	// default shouldFilter
-	if config.ShouldFilter == nil {
-		config.ShouldFilter = config.DefaultShouldFilter
+	if cfg.ShouldFilter == nil {
+		cfg.ShouldFilter = cfg.DefaultShouldFilter
 	}
 
 	// default DoFilter
-	if config.DoFilter == nil {
-		config.DoFilter = defaultDoFilter
+	if cfg.DoFilter == nil {
+		cfg.DoFilter = defaultDoFilter
 	}
 
-	return config
+	return cfg
 }
 
 func (cfg *Config) DefaultShouldFilter(c *fiber.Ctx) bool {
