@@ -80,7 +80,7 @@ func (cfg *Config) DefaultShouldFilter(c *fiber.Ctx) bool {
 }
 
 func defaultDoFilter(c *fiber.Ctx) error {
-	return c.Next()
+	return nil
 }
 
 func (cfg *Config) matchMethod(method string) bool {
