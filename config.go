@@ -119,23 +119,5 @@ func matchStep(p string, m string, fold bool) bool {
 		return true
 	}
 
-	//pSteps := strings.Split(p, "/")
-	//mSteps := strings.Split(m, "/")
-	//
-	//// get loop count
-	//loop := len(pSteps)
-	//if len(mSteps) < loop {
-	//	loop = len(mSteps)
-	//}
-	//
-	//for i := 0; i < loop; i++ {
-	//	pStep := pSteps[i]
-	//	mStep := m
-	//
-	//
-	//
-	//
-	//}
-
 	return false
 }

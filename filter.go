@@ -15,6 +15,6 @@ func New(config ...Config) fiber.Handler {
 		}
 
 		// skip filter
-		return c.Next()
+		return nil
 	}
 }
